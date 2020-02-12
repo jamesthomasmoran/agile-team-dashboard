@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="column"><img name="toDoImg" src="" width="75px"/></div>
+    <div class="column"><img name="progressImg" src="" width="75px"/></div>
+    <div class="column"><img name="reviewImg" src="" width="75px"/></div>
+    <div class="column"><img name="testImg" src="" width="75px"/></div>
+    <div class="column"><img name="doneImg" src="" width="75px"/></div>
+</div>
+<div class="row">
+    <div class="column-small">To do</div>
+    <div class="column-small">In progress</div>
+    <div class="column-small">In review</div>
+    <div class="column-small">In test</div>
+    <div class="column-small">Done</div>
+</div>
+
+
+
+<ul >
+    <li  data-foreach-item="items" class="row">
+        <div class="label" data-bind="item.label"></div>
+        <div class="value" data-bind="item.value"></div>
+    </li>
+</ul>
+

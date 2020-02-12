@@ -1,0 +1,24 @@
+<h1 class="title" data-bind="title"></h1>
+
+
+  <div class="row">
+    <div class="column-small"></div>
+    <div class="column-small">To Do</div>
+    <div class="column-small">In Progress</div>
+    <div class="column-small">In Review</div>
+    <div class="column-small">In Test</div>
+    <div class="column-small">Done</div>
+  </div>
+
+  <div class="row" data-foreach-item="items">
+    <div class="column-small bold" data-bind="item.name"></div>
+    <div class="column-small" data-bind="item.todo"></div>
+    <div class="column-small" data-bind="item.inProgress"></div>
+    <div class="column-small" data-bind="item.inReview"></div>
+    <div class="column-small" data-bind="item.inTest"></div>
+    <div class="column-small" data-bind="item.done"></div>
+  </div>
+
+
+
+
