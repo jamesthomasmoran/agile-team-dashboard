@@ -24,6 +24,19 @@ def get_active_sprint_for_view(view_id)
   end
 end
 
+# gets the active sprint naem for the view
+def get_active_sprint_name_for_view(view_id)
+  http = create_http
+  request = create_request("/rest/greenhopper/1.0/sprintquery/#{view_id}")
+  response = http.request(request)
+  sprints = JSON.parse(response.body)['sprints']
+  sprints.each do |sprint|
+    if sprint['state'] == 'ACTIVE'
+      return sprint["name"]
+    end
+  end
+end
+
 # returns array of issue status for each epic in sprint
 def get_epics_issue_status_in_active_sprint(sprint_id,view_id)
     current_start_at = 0
@@ -126,13 +139,15 @@ end
 SCHEDULER.every '59m', :first_in => 0 do |job|
    epic_counts = get_issue_counts_for_epics(get_epics_issue_status_in_active_sprint(get_active_sprint_for_view(VIEW_ID),VIEW_ID))
    items = []
-
+    sprint_name = get_active_sprint_name_for_view(VIEW_ID)
+    p sprint_name
    epic_counts.each do |data|
         items.push({name: data[0], todo: data[1], inProgress: data[2], inReview: data[3], inTest: data[4], done: data[5]})
    end
 json_formatted_items = items.to_json
 
    send_event('jiraEpicProgressBoard', {
+   sprintName: sprint_name,
   items: items
    })
  end

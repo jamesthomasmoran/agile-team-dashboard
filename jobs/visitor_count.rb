@@ -9,7 +9,7 @@ require 'yaml'
 # load configuration
 config = YAML.load_file('config.yml')
 
-service_account_email = "mys-dashboard@raspberry-pi-analytics-265413.iam.gserviceaccount.com" #config['google-analytics']['service-account-email'] # Email of service account
+service_account_email = config['google-analytics']['service-account-email'] # Email of service account
 key_file = config['google-analytics']['key-file'] # File containing your private key
 key_secret = config['google-analytics']['key-secret'] # Password to unlock private key
 profileID = config['google-analytics']['profile-id']
