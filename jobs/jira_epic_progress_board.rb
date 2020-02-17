@@ -140,7 +140,7 @@ SCHEDULER.every '59m', :first_in => 0 do |job|
    epic_counts = get_issue_counts_for_epics(get_epics_issue_status_in_active_sprint(get_active_sprint_for_view(VIEW_ID),VIEW_ID))
    items = []
     sprint_name = get_active_sprint_name_for_view(VIEW_ID)
-    p sprint_name
+
    epic_counts.each do |data|
         items.push({name: data[0], todo: data[1], inProgress: data[2], inReview: data[3], inTest: data[4], done: data[5]})
    end

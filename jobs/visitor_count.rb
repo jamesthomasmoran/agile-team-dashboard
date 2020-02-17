@@ -15,11 +15,11 @@ key_secret = config['google-analytics']['key-secret'] # Password to unlock priva
 profileID = config['google-analytics']['profile-id']
 app_version = config['google-analytics']['application-version']
 app_name = config['google-analytics']['application-version']
-p service_account_email
+
 # Get the Google API client
 client = Google::APIClient.new(:application_name => app_name,
   :application_version => app_version)
-p service_account_email
+
 # Load your credentials for the service account
 key = Google::APIClient::KeyUtils.load_from_pkcs12(key_file, key_secret)
 
